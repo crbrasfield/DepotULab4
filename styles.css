@@ -1,0 +1,15 @@
+.box {
+    background-color: black;
+    width: 100px;
+    height: 80px;
+    margin: 25px;
+    display: inline-block;
+    color: white;
+    padding-left: 40px;
+    padding-top:55px;
+}
+
+.button {
+    display: block;
+    margin: auto;
+}
