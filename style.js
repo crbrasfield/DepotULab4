@@ -23,15 +23,59 @@ function getRandomColor(e) {
     e.target.style.backgroundColor=color;
 }
 
+
+
 function addBox() {
     var boxArray = document.getElementsByClassName('box');
     var box = document.createElement('div');
+    
     box.className = 'box';
     box.id = String(boxArray.length);
-    var numbers = document.createTextNode(box.id);
+   
     box.addEventListener('click', getRandomColor);
-    box.appendChild(numbers);
+    box.addEventListener('mouseover', showId);
+    box.addEventListener('mouseout', hideId);
+    box.addEventListener('dblclick', deleteSibling);
+    
     document.body.appendChild(box);
     
 }
+
+function showId(e) {
+    var hoveredElement = e.target;
+    console.log(e.target.id);
+    e.target.style.color = "white";
+    e.target.innerHTML = e.target.id;
+
+}
+
+function hideId(e) {
+    var hoveredElement = e.target;
+    e.target.style.color ='white';
+    e.target.innerHTML = '';
+}
+
+function deleteSibling(e) {
+    
+    var previous = e.target;
+    previous.parentNode.removeChild(previous.previousSibling);
+    
+    var next = e.target;
+    next.parentNode.removeChild(next.nextSibling)
+    }
+    
+
+// trying to get the if else statement to work below
+//if () {
+//var previous = e.target;
+//previous.parentNode.removeChild(previous.previousSibling);
+//}
+//else if () {
+//var next = e.target;
+//next.parentNode.removeChild(next.nextSibling)
+//}
+
+//else () {
+//var alert = e.target;
+//}
 
