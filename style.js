@@ -13,18 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
-
-function getRandomColor(e) {
-    var letters = '0123456789ABCDEF'.split('');
-    var color = '#';
-    for (var i = 0; i < 6; i++ ) {
-        color += letters[Math.floor(Math.random() * 16)];
-        }
-    e.target.style.backgroundColor=color;
-}
-
-
-
 function addBox() {
     var boxArray = document.getElementsByClassName('box');
     var box = document.createElement('div');
@@ -41,28 +29,41 @@ function addBox() {
     
 }
 
+function getRandomColor(e) {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+        }
+    e.target.style.backgroundColor=color;
+}
+
 function showId(e) {
     var hoveredElement = e.target;
-    console.log(e.target.id);
-    e.target.style.color = "white";
+    e.target.style.color = 'white';
     e.target.innerHTML = e.target.id;
 
 }
 
 function hideId(e) {
     var hoveredElement = e.target;
-    e.target.style.color ='white';
     e.target.innerHTML = '';
 }
 
 function deleteSibling(e) {
     
-    var previous = e.target;
-    previous.parentNode.removeChild(previous.previousSibling);
+    var previous = e.target.id;
     
-    var next = e.target;
-    next.parentNode.removeChild(next.nextSibling)
+    if (previous % 2 === 0) {
+        e.target.nextSibling.remove();
     }
+    else if (previous % 2 > 0) {
+        e.target.previousSibling.remove();
+    }
+    else (previous != null && data !== undefined) 
+        alert: ('this is an alert');
+    }
+
     
 
 // trying to get the if else statement to work below
