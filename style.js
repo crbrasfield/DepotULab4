@@ -23,11 +23,11 @@ function addBox() {
     box.addEventListener('click', getRandomColor);
     box.addEventListener('mouseover', showId);
     box.addEventListener('mouseout', hideId);
-    box.addEventListener('dblclick', deleteSibling);
+    box.addEventListener('dblclick', removeElement);
     
     document.body.appendChild(box);
     
-}
+};
 
 function getRandomColor(e) {
     var letters = '0123456789ABCDEF'.split('');
@@ -36,47 +36,37 @@ function getRandomColor(e) {
         color += letters[Math.floor(Math.random() * 16)];
         }
     e.target.style.backgroundColor=color;
-}
+};
 
-function showId(e) {
-    var hoveredElement = e.target;
-    e.target.style.color = 'white';
-    e.target.innerHTML = e.target.id;
+function showId(event) {
+    var element = event.target;
+    element.innerHTML = element.id;
+};
 
-}
+function hideId(event) {
 
-function hideId(e) {
-    var hoveredElement = e.target;
-    e.target.innerHTML = '';
-}
+    var element = event.target;
+    element.innerHTML = '';
+};
 
-function deleteSibling(e) {
-    
-    var previous = e.target.id;
-    
-    if (previous % 2 === 0) {
-        e.target.nextSibling.remove();
-    }
-    else if (previous % 2 > 0) {
-        e.target.previousSibling.remove();
-    }
-    else (previous != null && data !== undefined) 
-        alert: ('this is an alert');
-    }
-
+function removeElement(e) {
+    var element = e.target;
     
 
-// trying to get the if else statement to work below
-//if () {
-//var previous = e.target;
-//previous.parentNode.removeChild(previous.previousSibling);
-//}
-//else if () {
-//var next = e.target;
-//next.parentNode.removeChild(next.nextSibling)
-//}
+    var id = parseInt(element.id, 10);
+    if (id % 2 === 0) { 
+        if (element.previousElementSibling) { 
+            element.previousElementSibling.remove();
+            return;
+        }
+    } else { 
+        if (element.nextElementSibling) { 
+            element.nextElementSibling.remove();
+            return; 
+        }
+    }
+    
+    alert("There's no sibling to remove!");
+};
 
-//else () {
-//var alert = e.target;
-//}
 
