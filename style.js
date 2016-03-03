@@ -2,20 +2,23 @@ document.addEventListener('DOMContentLoaded', function() {
     
     var button = document.createElement("BUTTON");
     var text = document.createTextNode("click me");
+    var contentContainer = document.createElement('div');
     
     button.style.color = "red";
     button.onclick = addBox;
+    button.className = 'button'; 
+    contentContainer.id = 'content-container'
+       
     button.appendChild(text);
-    
-    button.className = 'button';    
-
     document.body.appendChild(button); 
+    document.body.appendChild(contentContainer);
     
 });
 
 function addBox() {
     var boxArray = document.getElementsByClassName('box');
     var box = document.createElement('div');
+    var contentContainer = document.getElementById('content-container');
     
     box.className = 'box';
     box.id = String(boxArray.length);
@@ -26,6 +29,7 @@ function addBox() {
     box.addEventListener('dblclick', removeElement);
     
     document.body.appendChild(box);
+    contentContainer.appendChild(box);
     
 };
 
